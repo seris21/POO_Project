@@ -83,8 +83,8 @@ public class Game {
             playHumanTurn(currentPlayer);
         }
         if (players.getCurrentPlayer().getHand().isEmpty()){
-            winners.add(currentPlayer);
-            players.remove(currentPlayer);
+            winners.addPlayer(currentPlayer);
+            players.removePlayer(currentPlayer);
         }
         checkGameOver();
         //moveToNextPlayer();
