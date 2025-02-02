@@ -220,8 +220,8 @@ public class Game {
             for (int i = 0; i < winners.size(); i++) {
                 System.out.println((i + 1) winners.get(i).getNom());
             }
-            return false;
-        } else return true;
+            return true;
+        } else return false;
         //isGameOver = players.getCurrentPlayer().getHand().isEmpty();
     }
 
