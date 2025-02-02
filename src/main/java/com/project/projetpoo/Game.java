@@ -8,6 +8,7 @@ public class Game {
     private final Deck deck;
     private final PlayersList players;
     private final ArrayList<Card> cardsUpCard;
+    private final PlayersList winners;
     private Card topCard;
     private boolean isGameOver;
     private boolean isClockwise;
@@ -81,7 +82,10 @@ public class Game {
         } else {
             playHumanTurn(currentPlayer);
         }
-
+        if (players.getCurrentPlayer().getHand().isEmpty()){
+            winners.add(currentPlayer);
+            players.remove(currentPlayer);
+        }
         checkGameOver();
         //moveToNextPlayer();
     }
@@ -208,8 +212,17 @@ public class Game {
         System.out.println("Current Player: " + getCurrentPlayer().getNom()); // Debug
     }
 
-    public void checkGameOver() {
-        isGameOver = players.getCurrentPlayer().getHand().isEmpty();
+    public boolean checkGameOver() {
+
+        if (players.size() == 1){
+            
+             System.out.println("The winners are:");
+            for (int i = 0; i < winners.size(); i++) {
+                System.out.println((i + 1) winners.get(i).getNom());
+            }
+            return false;
+        } else return true;
+        //isGameOver = players.getCurrentPlayer().getHand().isEmpty();
     }
 
     public boolean isCardPlayable(Card card, Card topCard) {
